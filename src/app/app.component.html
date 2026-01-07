@@ -1,0 +1,187 @@
+<div class="card">
+  <!-- Navigation Tabs -->
+  <div class="card-header bg-">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'About'">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="card-body">
+    <div class="row">
+      
+      <!-- Employee List Section (Left Column) -->
+      <div class="col-9">
+        <div class="card">
+          <div class="card-header bg-success">
+            <h6 style="color: white;">{{ title }}</h6>
+          </div>
+          <div class="card-body">
+            <div class="col-12">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Emp ID</th>
+                    <th>Name</th>
+                    <th>Email ID</th>
+                    <th>Contact No</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Pincode</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (item of employeeList; track $index) {
+                    <tr>
+                      <td>{{ item.empId }}</td>
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.emailId }}</td>
+                      <td>{{ item.contactNO }}</td>
+                      <td>{{ item.city }}</td>
+                      <td>{{ item.state }}</td>
+                      <td>{{ item.pincode }}</td>
+                      <td>{{ item.address }}</td>
+                      <td class="text-center">
+                        <button class="btn btn-primary" (click)="onEdit(item.id)">Edit</button>
+                        <button class="btn btn-danger mx-2" (click)="onDelete(item.id)">Delete</button>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Employee Form Section (Right Column) -->
+      <div class="col-3">
+        <div class="card">
+          <div class="card-header bg-success">
+            <h6 style="color: white;">New Employee</h6>
+          </div>
+          <div class="card-body">
+            <form #form="ngForm">
+              
+              <!-- Employee ID -->
+              <div class="row">
+                <div class="col-12">
+                  <label for="empId">Employee ID</label>
+                  <input type="text" [(ngModel)]="empobj.empId" name="empId" class="form-control" #empId="ngModel" required pattern="^\d+$" />
+                  <div *ngIf="empId.invalid && empId.touched" class="error">
+                    <div *ngIf="empId.errors?.['required']">Required</div>
+                    <div *ngIf="empId.errors?.['pattern']">Please enter numbers</div>
+                  </div>
+                </div>
+
+                <!-- Name -->
+                <div class="col-12">
+                  <label for="name">Name</label>
+                  <input type="text" [(ngModel)]="empobj.name" name="name" class="form-control" required pattern="^[a-zA-Z\s]+$" #name="ngModel" />
+                  <div *ngIf="name.invalid && name.touched" class="error">
+                    <div *ngIf="name.errors?.['required']">Required</div>
+                    <div *ngIf="name.errors?.['pattern']">Please enter characters</div>
+                  </div>
+                </div>
+
+                <!-- Email ID -->
+                <div class="col-6">
+                  <label for="emailId">Email ID</label>
+                  <input type="text" [(ngModel)]="empobj.emailId" name="emailId" class="form-control" #emailId="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+                  <div *ngIf="emailId.invalid && emailId.touched" class="error">
+                    <div *ngIf="emailId.errors?.['required']">Required</div>
+                    <div *ngIf="emailId.errors?.['pattern']">Please enter valid email</div>
+                  </div>
+                </div>
+
+                <!-- Contact No -->
+                <div class="col-6">
+                  <label for="contactNO">Contact No</label>
+                  <input type="text" [(ngModel)]="empobj.contactNO" name="contactNO" class="form-control" required pattern="^\d{10}$" #contactNO="ngModel" />
+                  <div *ngIf="contactNO.invalid && contactNO.touched" class="error">
+                    <div *ngIf="contactNO.errors?.['required']">Required</div>
+                    <div *ngIf="contactNO.errors?.['pattern']">Please enter 10 digits</div>
+                  </div>
+                </div>
+
+                <!-- City -->
+                <div class="col-6">
+                  <label for="city">City</label>
+                  <select type="text" [(ngModel)]="empobj.city" name="city" class="form-control" required #city="ngModel">
+                    <option value="" disabled selected>Select a city</option>
+                    <option *ngFor="let city of cityList" [value]="city">{{ city }}</option>
+                  </select>
+                  <div *ngIf="city.invalid && city.touched" class="error">Required</div>
+                </div>
+
+                <!-- State -->
+                <div class="col-6">
+                  <label for="state">State</label>
+                  <input type="text" [(ngModel)]="empobj.state" name="state" [value]="state" class="form-control" required #state="ngModel" />
+                  <div *ngIf="state.invalid && state.touched" class="error">
+                    <div *ngIf="state.errors?.['required']">Required</div>
+                    <div *ngIf="state.errors?.['pattern']">Please enter characters</div>
+                  </div>
+                </div>
+
+                <!-- Pincode -->
+                <div class="col-6">
+                  <label for="pincode">Pincode</label>
+                  <input type="text" [(ngModel)]="empobj.pincode" name="pincode" class="form-control" #pincode="ngModel" required pattern="^\d{5,6}$" />
+                  <div *ngIf="pincode.invalid && pincode.touched" class="error">
+                    <div *ngIf="pincode.errors?.['required']">Required</div>
+                    <div *ngIf="pincode.errors?.['pattern']">Please enter 5-6 digits</div>
+                  </div>
+                </div>
+
+                <!-- Address -->
+                <div class="col-12">
+                  <label for="address">Address</label>
+                  <textarea [(ngModel)]="empobj.address" name="address" class="form-control" #address="ngModel" required pattern="^\S(.+)$"></textarea>
+                  <div *ngIf="address.invalid && address.touched" class="error">
+                    <div *ngIf="address.errors?.['required']">Required</div>
+                    <div *ngIf="address.errors?.['pattern']">Please enter valid address</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="row pt-2">
+                <div class="col-6 text-center">
+                  <button class="btn btn-secondary" type="button" (click)="onReset(form)">Reset</button>
+                </div>
+                <div class="col-6 text-center">
+                  @if(empobj.id == undefined) {
+                    <button class="btn btn-success" type="button" (click)="onSave(form)" [disabled]="form.invalid">Save</button>
+                  } @else {
+                    <button class="btn btn-warning" type="button" (click)="onUpdate(form)" [disabled]="form.invalid">Update</button>
+                  }
+                </div>
+              </div>
+
+              <!-- Message Display -->
+              <div class="row pt-2" *ngIf="message">
+                <div class="col-12">
+                  <div class="Message-Info"></div>
+                  {{ message }}
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

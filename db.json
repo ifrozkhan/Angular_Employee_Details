@@ -1,0 +1,26 @@
+{
+  "EmployeeList": [
+    {
+      "id": 1,
+      "empId": 1001,
+      "name": "John Doe",
+      "emailId": "john@example.com",
+      "contactNO": "9876543210",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "pincode": "500001",
+      "address": "123 Main Street"
+    },
+    {
+      "id": 2,
+      "empId": 1002,
+      "name": "Jane Smith",
+      "emailId": "jane@example.com",
+      "contactNO": "9876543211",
+      "city": "Banglore",
+      "state": "Karnataka",
+      "pincode": "560001",
+      "address": "456 Oak Avenue"
+    }
+  ]
+}
