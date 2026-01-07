@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { EmployeeModel } from './model/Employee';
@@ -43,11 +43,18 @@ stateList =['Telangana', 'Andhra pradesh'];
       this.employeeList =res;
   })
  }
-onSave( form: any){
+ onSave(form: NgForm){
+  if(!form || !form.valid){
+    this.showMessage('Please fill all required fields');
+    return;
+  }
   debugger;
   this.http.post<EmployeeModel[]>("http://localhost:3000/EmployeeList",this.empobj).subscribe((res: any)=> {
    this.getUser(); this.onReset(form);
    this.showMessage('Data save successfully')
+  }, err => {
+    console.error(err);
+    this.showMessage('Error saving data');
   })
 }
 onEdit(id: number){
@@ -55,11 +62,18 @@ onEdit(id: number){
     this.empobj =res;
   })
 }
-onUpdate(form: any){
+onUpdate(form: NgForm){
+  if(!form || !form.valid){
+    this.showMessage('Please fill all required fields');
+    return;
+  }
   this.http.put("http://localhost:3000/EmployeeList/"+this.empobj.id, this.empobj).subscribe((res: any)=>{
     this.getUser();
     this.onReset(form);
     this.showMessage('Data updated successfully')
+  }, err => {
+    console.error(err);
+    this.showMessage('Error updating data');
   })
 }
 onDelete(id: number){
@@ -71,16 +85,20 @@ onDelete(id: number){
     })
   }
 }
-onReset(form: any){
+onReset(form: NgForm){
   this.empobj = new EmployeeModel();
-  form.reset();
+  if(form) form.resetForm();
   this.showMessage('Data reseted successfully');
   //   this.empobj ={
 //     id: undefined, empId: 0, name : "", city : "", state : "", emailId : "", contactNO : "", address : "", pincode : ""
 //   };
 }
 showMessage(msg: string){
-  this.message =msg;
+  try{
+    this.message = (typeof msg === 'object') ? JSON.stringify(msg) : (msg as string);
+  }catch(e){
+    this.message = String(msg);
+  }
   setTimeout(()=> {
     this.message ='';
   }, 3000)
