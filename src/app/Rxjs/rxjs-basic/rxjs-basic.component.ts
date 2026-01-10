@@ -9,6 +9,13 @@ import { RxjsOperatorComponent } from "../rxjs-operator/rxjs-operator.component"
 })
 export class RxjsBasicComponent {
 
+  //Topic: Rxjs basic and observable
+  //Observable, 
+  //of(), 
+  //from(), 
+  //interval(), 
+  //timer()
+
   //Global varaiable
   cityList: string[] = ['Hyderabad', 'Banglore', 'Chennnai'];
 
@@ -24,18 +31,18 @@ export class RxjsBasicComponent {
   //Obbservable using Timer() emits data after specific time only Once
   Timer$ = timer(5000);
 
-  constructor(){
+  constructor() {
     // Basic Observable
-    const MyObs$ = new Observable(value =>{
+    const MyObs$ = new Observable(value => {
       value.next("Basic observale");
     })
 
-    MyObs$.subscribe(res =>{
+    MyObs$.subscribe(res => {
       console.log(res);
     })
 
-  // global Observable subscription using of()
-    this.cityList$.subscribe((cityList: string[]) =>{
+    // global Observable subscription using of()
+    this.cityList$.subscribe((cityList: string[]) => {
       console.log(cityList);
     })
 
@@ -45,13 +52,13 @@ export class RxjsBasicComponent {
     })
 
     //Observable using interval() subscription to get data in specific interval time
-    this.Myinterval$.subscribe((res: number) => {
-      console.log("Interval", +res);
-    })
-    
+    // this.Myinterval$.subscribe((res: number) => {
+    //   console.log("Interval", +res);
+    // })
+
     //Obbservable using Timer() subscription to get data after specific time only Once
-    this.Timer$.subscribe(res => {
-      console.log("Timer", +res);
+    this.Timer$.subscribe((res: any) => {
+      console.log("Timer", + res);
     })
 
   }
