@@ -15,8 +15,8 @@ import { HttpClient } from '@angular/common/http';
 export class SubBehReplayComponent implements OnInit {
   //Topic: 
   //Subject  
-  // Behavior Subject
-  // caching used replay subject
+  //Behavior Subject
+  //caching used replay subject
 
   // Subject
   StudentName$ = new Subject();
