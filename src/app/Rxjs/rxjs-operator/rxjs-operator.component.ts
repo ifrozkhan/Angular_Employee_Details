@@ -12,6 +12,14 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class RxjsOperatorComponent {
 
+  //Topic: Rxjs Operator
+  //pipe, 
+  //filter, 
+  //map, 
+  //tap,
+  //take, 
+  //valueChanges
+
   //global Observable using from() emits one by one data
   noList$ = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
@@ -31,13 +39,7 @@ export class RxjsOperatorComponent {
 
   constructor() {
 
-    //Topic: Rxjs Operator
-    //pipe, 
-    //filter, 
-    //map, 
-    //tap,
-    //take, 
-    //valueChanges
+
 
     //observable using pipe  to filter the data
     // this.noList$.pipe(filter(num => num % 2 === 0))
