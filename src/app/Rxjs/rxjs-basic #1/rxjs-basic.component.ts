@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { from, interval, Observable, of, timer } from 'rxjs';
-import { RxjsOperatorComponent } from "../rxjs-operator/rxjs-operator.component";
-import { SubBehReplayComponent } from '../sub-beh-replay/sub-beh-replay.component';
+import { RxjsOperatorComponent } from "../rxjs-operator #2/rxjs-operator.component";
+import { SubBehReplayComponent } from '../sub-beh-replay #3/sub-beh-replay.component';
 
 @Component({
   selector: 'app-rxjs-basic',
