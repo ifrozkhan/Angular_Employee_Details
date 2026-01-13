@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { from, interval, Observable, of, timer } from 'rxjs';
 import { RxjsOperatorComponent } from "../rxjs-operator #2/rxjs-operator.component";
 import { SubBehReplayComponent } from '../sub-beh-replay #3/sub-beh-replay.component';
+import { CombineObsComponent } from "../combine-obs #4/combine-obs.component";
 
 @Component({
   selector: 'app-rxjs-basic',
-  imports: [RxjsOperatorComponent, SubBehReplayComponent],
+  imports: [RxjsOperatorComponent, SubBehReplayComponent, CombineObsComponent],
   templateUrl: './rxjs-basic.component.html',
   styleUrl: './rxjs-basic.component.css'
 })

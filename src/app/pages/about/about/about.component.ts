@@ -16,12 +16,12 @@ export class AboutComponent {
   constructor() {
     // Subscribe to Behavior Subject and Subject
     this.MasterService.$RollBehavior.subscribe((res: any) => {
-      debugger;
+      // debugger;
     })
 
     // Subject subscription
     this.MasterService.$RollSubject.subscribe((res: any) => {
-      debugger;
+      // debugger;
     })
   }
 
