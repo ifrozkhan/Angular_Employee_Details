@@ -3,10 +3,11 @@ import { from, interval, Observable, of, timer } from 'rxjs';
 import { RxjsOperatorComponent } from "../rxjs-operator #2/rxjs-operator.component";
 import { SubBehReplayComponent } from '../sub-beh-replay #3/sub-beh-replay.component';
 import { CombineObsComponent } from "../combine-obs #4/combine-obs.component";
+import { RxjsReactiveFormsComponent } from "../rxjs-reactive-forms #5/rxjs-reactive-forms.component";
 
 @Component({
   selector: 'app-rxjs-basic',
-  imports: [RxjsOperatorComponent, SubBehReplayComponent, CombineObsComponent],
+  imports: [RxjsOperatorComponent, SubBehReplayComponent, CombineObsComponent, RxjsReactiveFormsComponent],
   templateUrl: './rxjs-basic.component.html',
   styleUrl: './rxjs-basic.component.css'
 })

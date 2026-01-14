@@ -1,0 +1,45 @@
+<p>rxjs-reactive-forms works!</p>
+<div class="container mt-4">
+    <div class="card-header">
+        <h3 class="text-center mb-4">Rxjs Reactive Form</h3>
+        <input type="text" placeholder="search" [formControl]="searchcontrol">
+    </div>
+    <div class="card-body">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" formControlName="name">
+                </div>
+                <div class="col-md-6">
+                    <input type="checkbox" class="me-2" formControlName="subscribe">
+                    <label for="subscribe">Subscribe to Newsletter</label>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" formControlName="email">
+                </div>
+                <div class="col-md-6">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control" formControlName="confirmPassword">
+                    <div *ngIf="passwordMissmatch" class="text-danger">
+                        Password is not mattched
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" formControlName="age">
+                </div>
+                <button type="submit" class="btn btn-primary">submit</button>
+            </div>
+        </form>
+    </div>
+</div>

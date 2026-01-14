@@ -65,22 +65,22 @@ export class CombineObsComponent {
     })
 
     // Cancel previous request and switch to latest one
-    this.searchControl.valueChanges.pipe(
-      switchMap((search: string) => this.http.get("https://dummyjson.com/products/search?q=" + search))
-    ).subscribe(res => {
-      // debugger;
-      console.log("User Details: " + res);
-    }
-    )
+    // this.searchControl.valueChanges.pipe(
+    //   switchMap((search: string) => this.http.get("https://dummyjson.com/products/search?q=" + search))
+    // ).subscribe(res => {
+    //   // debugger;
+    //   console.log("User Details: " + res);
+    // }
+    // )
 
     //Excecute inner observables in parallel without waiting for previous one to complete
-    this.searchControl.valueChanges.pipe(
-      mergeMap((search: string) => this.http.get("https://dummyjson.com/products/search?q=" + search))
-    ).subscribe(res => {
-      // debugger;
-      console.log("User Details: " + res);
-    }
-    )
+    // this.searchControl.valueChanges.pipe(
+    //   mergeMap((search: string) => this.http.get("https://dummyjson.com/products/search?q=" + search))
+    // ).subscribe(res => {
+    //   // debugger;
+    //   console.log("User Details: " + res);
+    // }
+    // )
 
     // Execute inner observable one after another in sequence
     this.searchControl.valueChanges.pipe(
