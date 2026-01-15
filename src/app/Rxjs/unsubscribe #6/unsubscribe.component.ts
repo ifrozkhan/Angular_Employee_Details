@@ -80,10 +80,10 @@ export class UnsubscribeComponent implements OnInit, OnDestroy {
 
   //unsubscribe 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
-    this.subscrptionList.forEach(res => {
-      res.unsubscribe();
-    })
-    this.subTakeUntil.next();
+    // this.subscription.unsubscribe();
+    // this.subscrptionList.forEach(res => {
+    //   res.unsubscribe();
+    // })
+    // this.subTakeUntil.next();
   }
 }

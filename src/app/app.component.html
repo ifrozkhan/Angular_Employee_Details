@@ -14,15 +14,15 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="'combine-obs'">Combine Observables</a>
       </li>
+      <form class="d-flex">
+        <select name="" id="" (click)="onRollChange($event)">
+          <option value="1">Guest</option>
+          <option value="2">Admin</option>
+          <option value="3">Super Admin</option>
+        </select>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </ul>
-    <form class="d-flex">
-      <select name="" id="" (click)="onRollChange($event)">
-        <option value="1">Guest</option>
-        <option value="2">Admin</option>
-        <option value="3">Super Admin</option>
-      </select>
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
   </div>
 </div>
 <router-outlet></router-outlet>
