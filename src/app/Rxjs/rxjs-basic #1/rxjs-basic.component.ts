@@ -4,10 +4,11 @@ import { RxjsOperatorComponent } from "../rxjs-operator #2/rxjs-operator.compone
 import { SubBehReplayComponent } from '../sub-beh-replay #3/sub-beh-replay.component';
 import { CombineObsComponent } from "../combine-obs #4/combine-obs.component";
 import { RxjsReactiveFormsComponent } from "../rxjs-reactive-forms #5/rxjs-reactive-forms.component";
+import { UnsubscribeComponent } from "../unsubscribe #6/unsubscribe.component";
 
 @Component({
   selector: 'app-rxjs-basic',
-  imports: [RxjsOperatorComponent, SubBehReplayComponent, CombineObsComponent, RxjsReactiveFormsComponent],
+  imports: [RxjsOperatorComponent, SubBehReplayComponent, CombineObsComponent, RxjsReactiveFormsComponent, UnsubscribeComponent],
   templateUrl: './rxjs-basic.component.html',
   styleUrl: './rxjs-basic.component.css'
 })
