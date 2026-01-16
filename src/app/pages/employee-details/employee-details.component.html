@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
-        
+
         <div class="col-9">
             <div class="card">
                 <div class="card-header bg-success">
                     <h6 style="color: white;">New Employee</h6>
                 </div>
                 <div class="card-body">
-                    <form #form="ngForm">
+                    <form #userForm="ngForm">
 
                         <!-- Employee ID -->
                         <div class="row">
@@ -15,9 +15,16 @@
                                 <label for="empId">Employee ID</label>
                                 <input type="text" [(ngModel)]="empDetailsobj.emp_ID" name="empId" class="form-control"
                                     #empId="ngModel" required pattern="^\d+$" />
-                                <div *ngIf="empId.invalid && empId.touched" class="error">
+                                <!-- <div *ngIf="empId.invalid && empId.touched" class="error">
                                     <div *ngIf="empId.errors?.['required']">Required</div>
                                     <div *ngIf="empId.errors?.['pattern']">Please enter numbers</div>
+                                </div> -->
+                                <div *ngIf="userForm.controls['empId']?.invalid && userForm.controls['empId']"
+                                    class="text-danger">
+                                    <span *ngIf="userForm.controls['empId']?.errors?.['required']">Emp ID is
+                                        required!</span>
+                                    <span *ngIf="userForm.controls['empId']?.errors?.['pattern']">Only numbers
+                                        allowed!</span>
                                 </div>
                             </div>
 
@@ -26,9 +33,16 @@
                                 <label for="name">Name</label>
                                 <input type="text" [(ngModel)]="empDetailsobj.emp_Name" name="name" class="form-control"
                                     required pattern="^[a-zA-Z\s]+$" #name="ngModel" />
-                                <div *ngIf="name.invalid && name.touched" class="error">
+                                <!-- <div *ngIf="name.invalid && name.touched" class="error">
                                     <div *ngIf="name.errors?.['required']">Required</div>
                                     <div *ngIf="name.errors?.['pattern']">Please enter characters</div>
+                                </div> -->
+                                <div *ngIf="userForm.controls['name']?.invalid && userForm.controls['name']?.touched"
+                                    class="text-danger">
+                                    <span *ngIf="userForm.controls['name']?.errors?.['required']">Name is
+                                        required!</span>
+                                    <span *ngIf="userForm.controls['name']?.errors?.['pattern']">Only letters
+                                        allowed!</span>
                                 </div>
                             </div>
 
@@ -37,9 +51,16 @@
                                 <label for="type">Type</label>
                                 <input type="text" [(ngModel)]="empDetailsobj.type" name="type" class="form-control"
                                     required pattern="^[a-zA-Z\s]+$" #type="ngModel" />
-                                <div *ngIf="type.invalid && name.touched" class="error">
+                                <!-- <div *ngIf="type.invalid && name.touched" class="error">
                                     <div *ngIf="type.errors?.['required']">Required</div>
                                     <div *ngIf="type.errors?.['pattern']">Please enter characters</div>
+                                </div> -->
+                                <div *ngIf="userForm.controls['type']?.invalid && userForm.controls['type']?.touched"
+                                    class="text-danger">
+                                    <span *ngIf="userForm.controls['type']?.errors?.['required']">Type is
+                                        required!</span>
+                                    <span *ngIf="userForm.controls['type']?.errors?.['pattern']">Only letters
+                                        allowed!</span>
                                 </div>
                             </div>
 
@@ -51,7 +72,12 @@
                                     <option value="" disabled selected>Select a city</option>
                                     <option *ngFor="let gender of genderList" [value]="gender">{{ gender }}</option>
                                 </select>
-                                <div *ngIf="gender.invalid && gender.touched" class="error">Required</div>
+                                <div *ngIf="userForm.controls['gender'].invalid && userForm.controls['gender']?.touched"
+                                    class="text-danger">
+                                    Gender is required!
+                                </div>
+
+                                <!-- <div *ngIf="gender.invalid && gender.touched" class="error">Required</div> -->
                             </div>
 
                             <!-- date of birth -->
@@ -59,8 +85,12 @@
                                 <label for="dob">Date of birth</label>
                                 <input type="date" [(ngModel)]="empDetailsobj.dob" name="dob" class="form-control"
                                     #dob="ngModel" placeholder="y/m/d" />
-                                <div *ngIf="dob.invalid && dob.touched" class="error">
+                                <!-- <div *ngIf="dob.invalid && dob.touched" class="error">
                                     <div *ngIf="dob.errors?.['required']">Required</div>
+                                </div> -->
+                                <div *ngIf="userForm.controls['dob']?.invalid && userForm.controls['dob']?.touched"
+                                    class="text-danger">
+                                    Date of Birth is required!
                                 </div>
                             </div>
 
@@ -69,9 +99,16 @@
                                 <label for="address">Address</label>
                                 <textarea [(ngModel)]="empDetailsobj.address" name="address" class="form-control"
                                     #address="ngModel" required pattern="^\S(.+)$"></textarea>
-                                <div *ngIf="address.invalid && address.touched" class="error">
+                                <!-- <div *ngIf="address.invalid && address.touched" class="error">
                                     <div *ngIf="address.errors?.['required']">Required</div>
                                     <div *ngIf="address.errors?.['pattern']">Please enter valid address</div>
+                                </div> -->
+                                <div *ngIf="userForm.controls['address']?.invalid && userForm.controls['address']?.touched"
+                                    class="text-danger">
+                                    <span *ngIf="userForm.controls['address']?.errors?.['required']">Address is
+                                        required!</span>
+                                    <span *ngIf="userForm.controls['address']?.errors?.['pattern']">Only Address pattern
+                                        allowed!</span>
                                 </div>
                             </div>
                         </div>
@@ -79,15 +116,15 @@
                         <!-- Action Buttons -->
                         <div class="row pt-2">
                             <div class="col-6 text-center">
-                                <button class="btn btn-secondary" type="button" (click)="onReset(form)">Reset</button>
+                                <button class="btn btn-secondary" type="button"
+                                    (click)="onReset(userForm)">Reset</button>
                             </div>
                             <div class="col-6 text-center">
                                 @if(isSave) {
-                                <button class="btn btn-success" type="button" (click)="onSave(form)"
-                                    [disabled]="form.invalid">Save</button>
+                                <button class="btn btn-success" type="button" (click)="onSave(userForm)">Save</button>
                                 } @else {
-                                <button class="btn btn-warning" type="button" (click)="onUpdate(form)"
-                                    [disabled]="form.invalid">Update</button>
+                                <button class="btn btn-warning" type="button"
+                                    (click)="onUpdate(userForm)">Update</button>
                                 }
                             </div>
                         </div>
@@ -135,7 +172,8 @@
                                     <td>{{ item.address }}</td>
                                     <td class="text-center">
                                         <button class="btn btn-primary" (click)="onEdit(item.emp_ID)">Edit</button>
-                                        <button class="btn btn-danger mx-2" (click)="onDelete(item.emp_ID)">Delete</button>
+                                        <button class="btn btn-danger mx-2"
+                                            (click)="onDelete(item.emp_ID)">Delete</button>
                                     </td>
                                 </tr>
                                 }
