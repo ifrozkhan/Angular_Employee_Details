@@ -1,0 +1,149 @@
+<div class="container">
+    <div class="row">
+        
+        <div class="col-9">
+            <div class="card">
+                <div class="card-header bg-success">
+                    <h6 style="color: white;">New Employee</h6>
+                </div>
+                <div class="card-body">
+                    <form #form="ngForm">
+
+                        <!-- Employee ID -->
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="empId">Employee ID</label>
+                                <input type="text" [(ngModel)]="empDetailsobj.emp_ID" name="empId" class="form-control"
+                                    #empId="ngModel" required pattern="^\d+$" />
+                                <div *ngIf="empId.invalid && empId.touched" class="error">
+                                    <div *ngIf="empId.errors?.['required']">Required</div>
+                                    <div *ngIf="empId.errors?.['pattern']">Please enter numbers</div>
+                                </div>
+                            </div>
+
+                            <!-- Name -->
+                            <div class="col-12">
+                                <label for="name">Name</label>
+                                <input type="text" [(ngModel)]="empDetailsobj.emp_Name" name="name" class="form-control"
+                                    required pattern="^[a-zA-Z\s]+$" #name="ngModel" />
+                                <div *ngIf="name.invalid && name.touched" class="error">
+                                    <div *ngIf="name.errors?.['required']">Required</div>
+                                    <div *ngIf="name.errors?.['pattern']">Please enter characters</div>
+                                </div>
+                            </div>
+
+                            <!-- Type -->
+                            <div class="col-6">
+                                <label for="type">Type</label>
+                                <input type="text" [(ngModel)]="empDetailsobj.type" name="type" class="form-control"
+                                    required pattern="^[a-zA-Z\s]+$" #type="ngModel" />
+                                <div *ngIf="type.invalid && name.touched" class="error">
+                                    <div *ngIf="type.errors?.['required']">Required</div>
+                                    <div *ngIf="type.errors?.['pattern']">Please enter characters</div>
+                                </div>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="col-6">
+                                <label for="gender">Gender</label>
+                                <select type="text" [(ngModel)]="empDetailsobj.gender" name="gender"
+                                    class="form-control" required #gender="ngModel">
+                                    <option value="" disabled selected>Select a city</option>
+                                    <option *ngFor="let gender of genderList" [value]="gender">{{ gender }}</option>
+                                </select>
+                                <div *ngIf="gender.invalid && gender.touched" class="error">Required</div>
+                            </div>
+
+                            <!-- date of birth -->
+                            <div class="col-6">
+                                <label for="dob">Date of birth</label>
+                                <input type="date" [(ngModel)]="empDetailsobj.dob" name="dob" class="form-control"
+                                    #dob="ngModel" placeholder="y/m/d" />
+                                <div *ngIf="dob.invalid && dob.touched" class="error">
+                                    <div *ngIf="dob.errors?.['required']">Required</div>
+                                </div>
+                            </div>
+
+                            <!-- Address -->
+                            <div class="col-6">
+                                <label for="address">Address</label>
+                                <textarea [(ngModel)]="empDetailsobj.address" name="address" class="form-control"
+                                    #address="ngModel" required pattern="^\S(.+)$"></textarea>
+                                <div *ngIf="address.invalid && address.touched" class="error">
+                                    <div *ngIf="address.errors?.['required']">Required</div>
+                                    <div *ngIf="address.errors?.['pattern']">Please enter valid address</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="row pt-2">
+                            <div class="col-6 text-center">
+                                <button class="btn btn-secondary" type="button" (click)="onReset(form)">Reset</button>
+                            </div>
+                            <div class="col-6 text-center">
+                                @if(isSave) {
+                                <button class="btn btn-success" type="button" (click)="onSave(form)"
+                                    [disabled]="form.invalid">Save</button>
+                                } @else {
+                                <button class="btn btn-warning" type="button" (click)="onUpdate(form)"
+                                    [disabled]="form.invalid">Update</button>
+                                }
+                            </div>
+                        </div>
+
+                        <!-- Message Display -->
+                        <div class="row pt-2" *ngIf="message">
+                            <div class="col-12">
+                                <div class="Message-Info"></div>
+                                {{ message }}
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success">
+                    <h6 style="color: white;">{{ title }}</h6>
+                </div>
+                <div class="card-body">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Emp ID</th>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Gender</th>
+                                    <th>Date of Birth</th>
+                                    <th>Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (item of employeeDetailsList; track $index) {
+                                <tr>
+                                    <td>{{ item.emp_ID }}</td>
+                                    <td>{{ item.emp_Name }}</td>
+                                    <td>{{ item.type }}</td>
+                                    <td>{{ item.gender }}</td>
+                                    <td>{{ item.dob }}</td>
+                                    <td>{{ item.address }}</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-primary" (click)="onEdit(item.emp_ID)">Edit</button>
+                                        <button class="btn btn-danger mx-2" (click)="onDelete(item.emp_ID)">Delete</button>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
