@@ -4,8 +4,8 @@ export class EmployeeModel {
     name: string;
     city: string;
     state: string;
-    emailId: string;
-    contactNO: string;
+    email_Id: string;
+    contact_NO: string;
     address: string;
     pincode: string;
 constructor() {
@@ -14,8 +14,8 @@ constructor() {
     this.name = "";
     this.city = "";
     this.state = "";
-    this.emailId = "";
-    this.contactNO = "";
+    this.email_Id = "";
+    this.contact_NO = "";
     this.address = "";
     this.pincode = "";
 }

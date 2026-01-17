@@ -2,25 +2,14 @@
   "EmployeeList": [
     {
       "id": "1",
-      "empId": 1001,
+      "empId": "1",
       "name": "John Doe",
-      "emailId": "john@example.com",
-      "contactNO": "9876543210",
+      "email_Id": "john@example.com",
+      "contact_NO": "9876543210",
       "city": "Hyderabad",
       "state": "Telangana",
       "pincode": "500001",
       "address": "123 Main Street"
-    },
-    {
-      "id": "2",
-      "empId": 1002,
-      "name": "Jane Smith",
-      "emailId": "jane@example.com",
-      "contactNO": "9876543211",
-      "city": "Banglore",
-      "state": "Karnataka",
-      "pincode": "560001",
-      "address": "456 Oak Avenue"
     },
     {
       "id": "81ec",
@@ -28,8 +17,8 @@
       "name": "ifroz",
       "city": "Banglore",
       "state": "karnataka",
-      "emailId": "nayazi@gmail.com",
-      "contactNO": "7386503548",
+      "email_Id": "nayazi@gmail.com",
+      "contact_NO": "7386503548",
       "address": "electronic city",
       "pincode": "516214"
     }

@@ -29,8 +29,8 @@
                     <tr>
                       <td>{{ item.empId }}</td>
                       <td>{{ item.name }}</td>
-                      <td>{{ item.emailId }}</td>
-                      <td>{{ item.contactNO }}</td>
+                      <td>{{ item.email_Id }}</td>
+                      <td>{{ item.contact_NO }}</td>
                       <td>{{ item.city }}</td>
                       <td>{{ item.state }}</td>
                       <td>{{ item.pincode }}</td>
@@ -80,21 +80,21 @@
 
                 <!-- Email ID -->
                 <div class="col-6">
-                  <label for="emailId">Email ID</label>
-                  <input type="text" [(ngModel)]="empobj.emailId" name="emailId" class="form-control" #emailId="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
-                  <div *ngIf="emailId.invalid && emailId.touched" class="error", class="text-danger">
-                    <div *ngIf="emailId.errors?.['required']">Required</div>
-                    <div *ngIf="emailId.errors?.['pattern']">Please enter valid email</div>
+                  <label for="email_Id">Email ID</label>
+                  <input type="text" [(ngModel)]="empobj.email_Id" name="email_Id" class="form-control" #email_Id="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+                  <div *ngIf="email_Id.invalid && email_Id.touched" class="error", class="text-danger">
+                    <div *ngIf="email_Id.errors?.['required']">Required</div>
+                    <div *ngIf="email_Id.errors?.['pattern']">Please enter valid email</div>
                   </div>
                 </div>
 
                 <!-- Contact No -->
                 <div class="col-6">
-                  <label for="contactNO">Contact No</label>
-                  <input type="text" [(ngModel)]="empobj.contactNO" name="contactNO" class="form-control" required pattern="^\d{10}$" #contactNO="ngModel" />
-                  <div *ngIf="contactNO.invalid && contactNO.touched" class="error", class="text-danger">
-                    <div *ngIf="contactNO.errors?.['required']">Required</div>
-                    <div *ngIf="contactNO.errors?.['pattern']">Please enter 10 digits</div>
+                  <label for="contact_NO">Contact No</label>
+                  <input type="text" [(ngModel)]="empobj.contact_NO" name="contact_NO" class="form-control" required pattern="^\d{10}$" #contact_NO="ngModel" />
+                  <div *ngIf="contact_NO.invalid && contact_NO.touched" class="error", class="text-danger">
+                    <div *ngIf="contact_NO.errors?.['required']">Required</div>
+                    <div *ngIf="contact_NO.errors?.['pattern']">Please enter 10 digits</div>
                   </div>
                 </div>
 
