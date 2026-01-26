@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-3">
+        <button type="button" (click)="onDecrement();" class="btn btn-primary">Decrement</button>
+    </div>
+    <div class="col-2">
+        {{counterValue | async}}
+    </div>
+    <div class="col-3">
+        <button type="button" (click)="onIncrement();" class="btn btn-primary">Incerement</button>
+    </div>
+</div>

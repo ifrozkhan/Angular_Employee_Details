@@ -38,7 +38,7 @@ export class HomeComponent {
   cityList =['Hyderabad', 'Banglore', 'Chennnai'];
   stateList =['Telangana', 'Andhra pradesh'];
   getUser(){
-    this.http.get<EmployeeModel[]>("http://localhost:3000/EmployeeList").subscribe((res: EmployeeModel[])=>{
+    this.http.get<EmployeeModel[]>("https://localhost:7199/api/Employee_Full_Details").subscribe((res: EmployeeModel[])=>{
         this.employeeList =res;
     })
   }
@@ -48,7 +48,7 @@ export class HomeComponent {
       return;
     }
     debugger;
-    this.http.post<EmployeeModel[]>("http://localhost:3000/EmployeeList",this.empobj).subscribe((res: any)=> {
+    this.http.post<EmployeeModel[]>("https://localhost:7199/api/Employee_Full_Details",this.empobj).subscribe((res: any)=> {
     this.getUser(); this.onReset(form);
     this.showMessage('Data save successfully')
     }, err => {
@@ -57,7 +57,7 @@ export class HomeComponent {
     })
   }
   onEdit(id: number){
-    this.http.get<EmployeeModel>("http://localhost:3000/EmployeeList/"+id).subscribe((res: EmployeeModel) =>{
+    this.http.get<EmployeeModel>("https://localhost:7199/api/Employee_Full_Details/"+id).subscribe((res: EmployeeModel) =>{
       this.empobj =res;
     })
   }
@@ -66,7 +66,7 @@ export class HomeComponent {
       this.showMessage('Please fill all required fields');
       return;
     }
-    this.http.put("http://localhost:3000/EmployeeList/"+this.empobj.id, this.empobj).subscribe((res: any)=>{
+    this.http.put("https://localhost:7199/api/Employee_Full_Details/"+this.empobj.id, this.empobj).subscribe((res: any)=>{
       this.getUser();
       this.onReset(form);
       this.showMessage('Data updated successfully')
@@ -78,7 +78,7 @@ export class HomeComponent {
   onDelete(id: number){
     const result =confirm("Are you sure want to delete");
     if(result){
-      this.http.delete<EmployeeModel>("http://localhost:3000/EmployeeList/"+id).subscribe((res:EmployeeModel)=> {
+      this.http.delete<EmployeeModel>("https://localhost:7199/api/Employee_Full_Details/"+id).subscribe((res:EmployeeModel)=> {
         this.getUser();
         const result = alert("Data deleted Successfully");
       })
@@ -102,4 +102,6 @@ export class HomeComponent {
       this.message ='';
     }, 3000)
     }
+
+    // https://localhost:7199/api/Employee_Full_Details
 }
