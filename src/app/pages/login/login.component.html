@@ -1,0 +1,39 @@
+<div style="width:300px;margin:auto;margin-top:50px">
+
+  <h2 *ngIf="isLogin">Login</h2>
+  <h2 *ngIf="!isLogin">Register</h2>
+
+  <!-- LOGIN -->
+  <div *ngIf="isLogin">
+    <input type="email" placeholder="Email"
+      [(ngModel)]="loginObj.email" /><br><br>
+
+    <input type="password" placeholder="Password"
+      [(ngModel)]="loginObj.password" /><br><br>
+
+    <button (click)="login()">Login</button><br><br>
+
+    <a (click)="toggleForm()" style="cursor:pointer">
+      New user? Register
+    </a>
+  </div>
+
+  <!-- REGISTER -->
+  <div *ngIf="!isLogin">
+    <input type="text" placeholder="Name"
+      [(ngModel)]="registerObj.name" /><br><br>
+
+    <input type="email" placeholder="Email"
+      [(ngModel)]="registerObj.email" /><br><br>
+
+    <input type="password" placeholder="Password"
+      [(ngModel)]="registerObj.password" /><br><br>
+
+    <button (click)="register()">Register</button><br><br>
+
+    <a (click)="toggleForm()" style="cursor:pointer">
+      Already have account? Login
+    </a>
+  </div>
+
+</div>

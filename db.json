@@ -21,6 +21,25 @@
       "contact_NO": "7386503548",
       "address": "electronic city",
       "pincode": "516214"
+    },
+    {
+      "id": "4f17",
+      "empId": "2",
+      "name": "khan",
+      "city": "Banglore",
+      "state": "Karnataka",
+      "email_Id": "nayazi@gmail.com",
+      "contact_NO": "1234567890",
+      "address": "banglore",
+      "pincode": "628363"
+    }
+  ],
+  "users": [
+    {
+      "id": "110a",
+      "name": "ifroz",
+      "email": "nayazi@gmail.com",
+      "password": "$I7386503548Z"
     }
   ]
 }
