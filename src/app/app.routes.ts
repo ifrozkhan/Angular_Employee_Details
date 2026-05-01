@@ -10,24 +10,27 @@ import { loginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { loginGuard } from './service/guards/login.guards';
 import { authGuard } from './service/guards/dashboard.guard';
+import { SignalComponent } from './signal/signal.component';
 export const routes: Routes = [
-  { path: '', 
+  {
+    path: '',
     component: loginComponent,
-    canActivate:[loginGuard]
-   },
+    canActivate: [loginGuard]
+  },
 
   {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [authGuard],
     children: [
-      { path:'', redirectTo:'home', pathMatch:'full'},
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'about', component: AboutComponent },
       { path: 'rxjs-basic', component: RxjsBasicComponent },
       { path: 'combine-obs', component: CombineObsComponent },
       { path: 'employee-details', component: EmployeeDetailsComponent },
-      { path: "ngrx-counter", component: CounterComponent }
+      { path: "ngrx-counter", component: CounterComponent },
+      { path: 'signal', component: SignalComponent }
     ]
   },
   // {

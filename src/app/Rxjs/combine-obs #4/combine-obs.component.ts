@@ -73,7 +73,7 @@ export class CombineObsComponent {
     // }
     // )
 
-    //Excecute inner observables in parallel without waiting for previous one to complete
+    //Excecute inner observables in parallel without waiting for previous one to IT complete ALL
     // this.searchControl.valueChanges.pipe(
     //   mergeMap((search: string) => this.http.get("https://dummyjson.com/products/search?q=" + search))
     // ).subscribe(res => {

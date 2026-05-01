@@ -1,0 +1,94 @@
+<p>signal works!</p>
+
+<span>{{ firstName }}</span>
+<br><br>
+
+<span>{{ courseName() }}</span>
+<br><br>
+
+<span>{{ courseDetails() }}</span>
+<br><br>
+
+<span>Cities: {{CityList() }}</span>
+<br><br>
+
+<input type="text" #childNameText [(ngModel)]="newCity" placeholder="Enter your name" />
+<br><br>
+<button (click)="UpdateCity()">Update City</button>
+<br><br>
+
+<span>Employee Details: {{ empObj() | json }}</span>
+<br><br>
+<table class="table">
+    <tr>
+        <td>
+            <label for="empId">ID:</label>
+        </td>
+        <td>
+            <input type="text" id="empId" (input)="changeEmpIdValue($event)" placeholder="Enter your name" />
+        </td>
+        <td>
+            <label for="empName">Name:</label>
+        </td>
+        <td>
+            <input type="text" id="empName" (input)="changeFormValue('empName', $event)"
+                placeholder="Enter your name" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="empSal">Salary:</label>
+        </td>
+        <td>
+            <input type="text" id="empSal" (input)="changeFormValue('empSal', $event)" placeholder="Enter your name" />
+        </td>
+        <td>
+            <label for="empDept">Department:</label>
+        </td>
+        <td>
+            <input type="text" id="empDept" (input)="changeFormValue('empDept', $event)"
+                placeholder="Enter your name" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="empCity">City:</label>
+        </td>
+        <td>
+            <input type="text" id="empCity" (input)="changeFormValue('empCity', $event)"
+                placeholder="Enter your name" />
+        </td>
+        <td>
+            <label for="empCountry">Country:</label>
+        </td>
+        <td>
+            <input type="text" id="empCountry" (input)="changeFormValue('empCountry', $event)"
+                placeholder="Enter your name" />
+        </td>
+    </tr>
+</table>
+<hr>
+<div class="row pt-4">
+    <div class="col-4">
+        <label for="Fname">First Name:</label>
+        <input type="text" id="Fname" (input)="changeFName($event)"
+            placeholder="Enter your name" />
+    </div>
+     <div class="col-4">
+        <label for="Mname">Middle Name:</label>
+        <input type="text" id="Mname" (input)="changeMName($event)"
+            placeholder="Enter your name" />
+    </div>
+     <div class="col-4">
+        <label for="Lname">Last Name:</label>
+        <input type="text" id="Lname" (input)="changeLName($event)"
+            placeholder="Enter your name" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <label>Full Name - {{FullName()}}</label>
+        <input type="text" [value]="FullName()" class="form-control" /> 
+    </div>
+</div>
+<br><br>
